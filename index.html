@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comunicado 2 & 5 Abril 2026</title>
+<title>Comunicado 12 Abril 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -24,7 +24,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{background:var(--dark);font-family:'Exo 2',sans-serif;color:var(--text);overflow-x:hidden;}
- 
+
   .nebula{position:fixed;inset:0;z-index:0;pointer-events:none;
     background:
       radial-gradient(ellipse 70% 50% at 5% 10%,  rgba(80,100,180,.10) 0%,transparent 60%),
@@ -32,90 +32,127 @@
       radial-gradient(ellipse 60% 60% at 50% 50%,  rgba(60,80,140,.05) 0%,transparent 70%),
       radial-gradient(ellipse 45% 70% at 20% 90%,  rgba(80,60,120,.07) 0%,transparent 55%);}
   canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
- 
+
   .page{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:48px 24px 80px;}
- 
+
   .rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease;}
   .rv.in{opacity:1;transform:translateY(0);}
- 
+
+  /* HEADER */
   .hdr{text-align:center;margin-bottom:48px;}
-  .hbadge{
-    display:inline-flex;align-items:center;gap:8px;
-    border:1px solid rgba(142,175,212,.3);border-radius:40px;
-    padding:5px 22px;font-family:'Orbitron',sans-serif;
-    font-size:9px;letter-spacing:3.5px;color:var(--accent);margin-bottom:18px;}
-  .htitle{
-    font-family:'Orbitron',sans-serif;font-size:clamp(22px,5vw,50px);font-weight:900;line-height:1.05;
-    color:var(--neon);
-    text-shadow:0 0 40px rgba(180,220,255,.35), 0 0 80px rgba(140,180,255,.15);
+  .hbadge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(142,175,212,.3);border-radius:40px;
+    padding:5px 22px;font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:3.5px;color:var(--accent);margin-bottom:18px;}
+  .htitle{font-family:'Orbitron',sans-serif;font-size:clamp(22px,5vw,50px);font-weight:900;line-height:1.05;
+    color:var(--neon);text-shadow:0 0 40px rgba(180,220,255,.35),0 0 80px rgba(140,180,255,.15);
     letter-spacing:1px;margin-bottom:8px;}
   .hsub{font-family:'Orbitron',sans-serif;font-size:clamp(9px,1.6vw,12px);color:var(--muted);letter-spacing:3px;}
-  .hcorredor{
-    margin-top:14px;display:inline-block;
-    border:1px solid rgba(201,169,110,.22);border-radius:8px;padding:7px 18px;
-    font-size:12px;color:var(--gold);letter-spacing:.7px;}
-  .dpills{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px;}
-  .dpill{display:flex;align-items:center;gap:10px;padding:11px 20px;border-radius:50px;font-weight:700;font-size:14px;transition:transform .25s;}
-  .dpill:hover{transform:translateY(-2px);}
-  .dp1{background:rgba(142,175,212,.06);border:1px solid rgba(142,175,212,.28);color:var(--neon);}
-  .dp2{background:rgba(168,158,201,.06);border:1px solid rgba(168,158,201,.28);color:var(--neon);}
+  .hcorredor{margin-top:14px;display:inline-block;border:1px solid rgba(201,169,110,.22);border-radius:8px;
+    padding:7px 18px;font-size:12px;color:var(--gold);letter-spacing:.7px;}
+  .dpill{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:12px 24px;
+    border-radius:50px;font-weight:700;font-size:14px;
+    border:1px solid rgba(142,175,212,.28);color:var(--neon);background:rgba(142,175,212,.05);}
   .pnum{font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:2px;opacity:.55;text-transform:uppercase;}
- 
+
+  /* DIVIDER */
   .dv{display:flex;align-items:center;gap:10px;margin:28px 0;}
   .dv .ln{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(142,175,212,.25),transparent);}
   .dv .dt{width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.6;}
- 
+
+  /* SECTION LABEL */
   .sl{font-family:'Orbitron',sans-serif;font-size:8.5px;letter-spacing:3px;text-transform:uppercase;
     color:var(--neon);margin-bottom:10px;display:flex;align-items:center;gap:8px;
     text-shadow:0 0 20px rgba(180,220,255,.3);}
   .sl::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(220,238,255,.25),transparent);}
- 
-  .card{
-    background:var(--surface);border:1px solid var(--border);
-    border-radius:16px;padding:22px 26px;margin-bottom:18px;
-    backdrop-filter:blur(12px);position:relative;overflow:hidden;
+
+  /* CARD */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px 26px;
+    margin-bottom:18px;backdrop-filter:blur(12px);position:relative;overflow:hidden;
     transition:border-color .3s,transform .3s;}
   .card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
     background:var(--ca,linear-gradient(90deg,rgba(142,175,212,.4),rgba(168,158,201,.4)));}
   .card:hover{border-color:var(--border-h);transform:translateY(-2px);}
- 
+  .ch{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .ci{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    font-size:19px;flex-shrink:0;background:rgba(255,255,255,.04);border:1px solid var(--border);}
+  .ct{font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--neon);text-shadow:0 0 16px rgba(180,220,255,.3);}
+  .cs{font-size:11px;color:var(--muted);margin-top:2px;}
+
   .greet{text-align:center;}
   .gtxt{font-size:clamp(14px,2.5vw,20px);font-weight:300;font-style:italic;
     color:var(--neon);opacity:.9;text-shadow:0 0 24px rgba(180,220,255,.2);}
- 
-  /* BANNER */
-  .no-asist{
-    position:relative;overflow:hidden;
-    border-radius:20px;padding:40px 32px;margin-bottom:24px;text-align:center;
-    background:rgba(180,40,40,.07);
-    border:1px solid rgba(220,80,80,.22);}
-  .no-asist::before{
-    content:'';position:absolute;inset:0;
-    background:radial-gradient(ellipse 80% 60% at 50% 50%, rgba(200,50,50,.08) 0%, transparent 70%);
-    pointer-events:none;}
-  .no-asist-ico{font-size:52px;display:block;margin-bottom:16px;animation:pulseico 2.5s ease-in-out infinite;}
-  @keyframes pulseico{
-    0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px rgba(220,80,80,.3));}
-    50%{transform:scale(1.06);filter:drop-shadow(0 0 22px rgba(220,80,80,.6));}}
-  .no-asist-title{
-    font-family:'Orbitron',sans-serif;font-size:clamp(16px,3.5vw,28px);font-weight:900;
-    color:var(--neon);letter-spacing:1.5px;margin-bottom:14px;
-    text-shadow:0 0 30px rgba(220,100,100,.5), 0 0 60px rgba(180,220,255,.2);}
-  .no-asist-sub{
-    font-size:clamp(13px,2vw,16px);color:var(--dust);line-height:1.75;
-    max-width:640px;margin:0 auto;position:relative;z-index:1;}
-  .no-asist-sub strong{color:var(--neon);text-shadow:0 0 12px rgba(180,220,255,.25);}
-  .no-asist-dates{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px;}
-  .date-badge{
-    padding:10px 22px;border-radius:40px;font-family:'Orbitron',sans-serif;
-    font-size:12px;font-weight:700;letter-spacing:1.5px;
-    background:rgba(220,80,80,.1);border:1px solid rgba(220,80,80,.3);
-    color:var(--neon);text-shadow:0 0 10px rgba(180,220,255,.2);}
- 
+
+  /* BULLETS */
+  .bl{list-style:none;margin-top:8px;}
+  .bl li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;
+    border-bottom:1px solid rgba(255,255,255,.04);color:var(--dust);font-size:13.5px;line-height:1.55;}
+  .bl li:last-child{border-bottom:none;}
+  .bd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:6px;background:var(--accent);opacity:.7;}
+  .bw{background:var(--warn);opacity:.8;}
+  .bg{background:var(--gold);opacity:.8;}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:600px){.two{grid-template-columns:1fr;}.card{padding:18px 20px;}}
+
+  /* CALLOUT */
+  .callout{display:flex;gap:12px;border-radius:10px;padding:12px 16px;margin-top:12px;
+    border-left:2px solid var(--clc,var(--gold));background:rgba(255,255,255,.025);}
+  .callout .cico{font-size:16px;flex-shrink:0;opacity:.8;}
+  .callout .ctxt{font-size:13px;color:var(--dust);line-height:1.6;}
+  .callout .ctxt strong{color:var(--neon);}
+
+  /* REPORTES */
+  .rep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px;}
+  @media(max-width:480px){.rep-grid{grid-template-columns:repeat(2,1fr);}}
+  .rep-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:14px;position:relative;overflow:hidden;transition:all .25s;}
+  .rep-item::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--accent);opacity:.5;}
+  .rep-item:hover{border-color:var(--border-h);transform:translateY(-2px);}
+  .ritime{font-family:'Orbitron',sans-serif;font-size:15px;font-weight:900;color:var(--neon);margin-bottom:3px;}
+  .rilabel{font-size:11.5px;color:var(--dust);line-height:1.4;}
+  .riico{font-size:18px;margin-bottom:7px;display:block;opacity:.8;}
+
+  /* HORARIO TIMELINE */
+  .sched{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    overflow:hidden;margin-bottom:18px;backdrop-filter:blur(12px);position:relative;}
+  .sched::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(142,175,212,.4),rgba(168,158,201,.4),transparent);}
+  .tl{position:relative;padding:22px 24px 22px 56px;}
+  .tl::before{content:'';position:absolute;left:28px;top:22px;bottom:22px;width:1px;
+    background:linear-gradient(180deg,transparent,rgba(142,175,212,.3) 12%,rgba(142,175,212,.3) 88%,transparent);}
+  .tli{position:relative;margin-bottom:4px;cursor:pointer;}
+  .tldot{position:absolute;left:-40px;top:18px;width:10px;height:10px;border-radius:50%;
+    background:rgba(142,175,212,.3);border:1px solid rgba(142,175,212,.5);transition:all .25s;z-index:2;}
+  .tli:hover .tldot,.tli.open .tldot{background:var(--accent);box-shadow:0 0 10px rgba(142,175,212,.4);}
+  .tlh{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;margin-bottom:2px;
+    background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);transition:all .25s;user-select:none;}
+  .tli:hover .tlh,.tli.open .tlh{background:rgba(142,175,212,.05);border-color:rgba(142,175,212,.15);}
+  .tltime{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;color:var(--accent);min-width:88px;flex-shrink:0;}
+  .tlico{font-size:17px;flex-shrink:0;opacity:.75;}
+  .tllb{flex:1;}
+  .tlname{font-size:13.5px;font-weight:600;color:var(--neon);margin-bottom:1px;
+    text-shadow:0 0 10px rgba(180,220,255,.12);}
+  .tlhint{font-size:10.5px;color:var(--muted);}
+  .tlarr{width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.04);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .25s;color:var(--accent);font-size:10px;flex-shrink:0;}
+  .tli.open .tlarr{transform:rotate(180deg);}
+  .tldet{overflow:hidden;max-height:0;transition:max-height .4s cubic-bezier(.4,0,.2,1);}
+  .tli.open .tldet{max-height:500px;}
+  .tlinn{padding:12px 14px 14px;margin-bottom:6px;background:rgba(255,255,255,.02);
+    border:1px solid rgba(255,255,255,.05);border-top:none;border-radius:0 0 10px 10px;}
+  .tlinn ul{list-style:none;}
+  .tlinn ul li{display:flex;align-items:flex-start;gap:8px;padding:5px 0;
+    font-size:12.5px;color:var(--dust);line-height:1.5;border-bottom:1px solid rgba(255,255,255,.03);}
+  .tlinn ul li:last-child{border-bottom:none;}
+  .tlinn ul li::before{content:'›';color:var(--accent);font-size:12px;margin-top:1px;flex-shrink:0;}
+  .tlbadge{display:inline-block;background:rgba(142,175,212,.08);border:1px solid rgba(142,175,212,.2);
+    border-radius:20px;padding:2px 11px;font-size:9.5px;color:var(--accent);
+    font-family:'Orbitron',sans-serif;letter-spacing:1.5px;margin-bottom:8px;}
+
   /* REGLAMENTO */
-  .reg-item{
-    background:var(--surface);border:1px solid var(--border);
-    border-radius:12px;margin-bottom:8px;overflow:hidden;cursor:pointer;transition:border-color .25s;}
+  .reg-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    margin-bottom:8px;overflow:hidden;cursor:pointer;transition:border-color .25s;}
   .reg-item:hover,.reg-item.open{border-color:var(--border-h);}
   .reg-head{display:flex;align-items:center;gap:12px;padding:14px 18px;user-select:none;}
   .reg-num{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;
@@ -132,7 +169,64 @@
     border-top:1px solid rgba(255,255,255,.04);}
   .reg-inner p{padding-top:12px;}
   .reg-inner strong{color:var(--neon);}
- 
+
+  /* CODES */
+  .code-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px;}
+  .cbadge{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;
+    padding:9px 18px;border-radius:10px;letter-spacing:.5px;border:1px solid var(--border);}
+  .c57{color:var(--warn);}
+  .c58{color:var(--ok);}
+
+  /* DRIVE */
+  .drive-row{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:14px 18px;margin-top:12px;transition:all .25s;text-decoration:none;}
+  .drive-row:hover{border-color:var(--border-h);transform:translateY(-2px);}
+  .drive-info{flex:1;}
+  .drive-title2{font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:2px;color:var(--accent);margin-bottom:3px;}
+  .drive-desc2{font-size:12px;color:var(--muted);}
+  .drive-btn2{border:1px solid var(--border);border-radius:8px;padding:7px 14px;
+    font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:1.5px;color:var(--accent);
+    flex-shrink:0;transition:all .25s;}
+  .drive-row:hover .drive-btn2{border-color:var(--border-h);}
+
+  /* ── TAREA CONTENEDOR ── */
+  .tarea-box{
+    position:relative;overflow:hidden;
+    border-radius:20px;padding:36px 32px;margin-bottom:18px;
+    background:rgba(201,169,110,.05);
+    border:1px solid rgba(201,169,110,.25);}
+  .tarea-box::before{content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(201,169,110,.06) 0%,transparent 70%);
+    pointer-events:none;}
+  .tarea-title{
+    font-family:'Orbitron',sans-serif;font-size:clamp(13px,2.8vw,20px);font-weight:900;
+    color:var(--neon);letter-spacing:1.5px;margin-bottom:6px;
+    text-shadow:0 0 24px rgba(201,169,110,.4),0 0 50px rgba(180,220,255,.15);}
+  .tarea-sub{font-size:12px;color:var(--muted);margin-bottom:24px;letter-spacing:.5px;}
+  .tarea-item{
+    display:flex;gap:16px;align-items:flex-start;
+    background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);
+    border-radius:12px;padding:16px 18px;margin-bottom:12px;
+    position:relative;overflow:hidden;transition:border-color .25s;}
+  .tarea-item::before{content:'';position:absolute;top:0;left:0;bottom:0;width:2px;
+    background:var(--gold);border-radius:2px 0 0 2px;}
+  .tarea-item:hover{border-color:rgba(201,169,110,.25);}
+  .tarea-num{
+    font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;
+    color:var(--gold);flex-shrink:0;min-width:28px;
+    text-shadow:0 0 14px rgba(201,169,110,.4);}
+  .tarea-content{}
+  .tarea-q{font-size:14px;font-weight:600;color:var(--neon);line-height:1.5;margin-bottom:4px;
+    text-shadow:0 0 10px rgba(180,220,255,.12);}
+  .tarea-hint{font-size:12px;color:var(--muted);line-height:1.5;}
+  .tarea-envio{
+    display:flex;align-items:center;gap:12px;margin-top:22px;
+    background:rgba(142,175,212,.06);border:1px solid rgba(142,175,212,.2);
+    border-radius:12px;padding:14px 18px;}
+  .tarea-envio-ico{font-size:22px;flex-shrink:0;}
+  .tarea-envio-txt{font-size:13px;color:var(--dust);line-height:1.6;}
+  .tarea-envio-txt strong{color:var(--neon);}
+
   /* FINAL */
   .final{text-align:center;border:1px solid rgba(255,255,255,.07);border-radius:16px;
     padding:28px 24px;margin-top:6px;position:relative;overflow:hidden;}
@@ -143,184 +237,358 @@
   @keyframes flt{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
   .final p{font-size:clamp(12.5px,2vw,14.5px);color:var(--dust);line-height:1.8;position:relative;z-index:1;}
   .final strong{color:var(--neon);text-shadow:0 0 12px rgba(180,220,255,.2);}
- 
-  /* ── FOOTER ── */
-  .footer{
-    text-align:center;
-    margin-top:44px;
-    padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.06);
-  }
-  .footer-brand{
-    font-family:'Orbitron',sans-serif;
-    font-size:clamp(11px,1.8vw,14px);
-    font-weight:600;
-    letter-spacing:1.8px;
-    color:var(--neon);
-    margin-bottom:8px;
-    text-shadow:
-      0 0 16px rgba(200,230,255,.5),
-      0 0 36px rgba(160,200,255,.25),
-      0 0 60px rgba(120,170,255,.12);
-  }
-  .footer-sub{
-    font-family:'Orbitron',sans-serif;
-    font-size:clamp(8px,1.2vw,10px);
-    letter-spacing:2.5px;
-    color:var(--neon);
-    opacity:.38;
-    text-shadow:0 0 12px rgba(180,220,255,.2);
-  }
+
+  /* FOOTER */
+  .footer{text-align:center;margin-top:44px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);}
+  .footer-brand{font-family:'Orbitron',sans-serif;font-size:clamp(11px,1.8vw,14px);font-weight:600;
+    letter-spacing:1.8px;color:var(--neon);margin-bottom:8px;
+    text-shadow:0 0 16px rgba(200,230,255,.5),0 0 36px rgba(160,200,255,.25),0 0 60px rgba(120,170,255,.12);}
+  .footer-sub{font-family:'Orbitron',sans-serif;font-size:clamp(8px,1.2vw,10px);
+    letter-spacing:2.5px;color:var(--neon);opacity:.38;text-shadow:0 0 12px rgba(180,220,255,.2);}
 </style>
 </head>
 <body>
- 
+
 <div class="nebula"></div>
 <canvas id="stars"></canvas>
- 
+
 <div class="page">
- 
+
+  <!-- HEADER -->
   <div class="hdr rv">
     <div class="hbadge">⬡ Comunicado · Sur 5</div>
-    <h1 class="htitle">JORNADAS<br>SEMANA SANTA</h1>
+    <h1 class="htitle">JORNADA <br> EN RUTA<span style="font-size:1.0em;opacity:.90;"> # 5</span></h1>
     <p class="hsub">Ciclovía Bogotá Augusto Ramírez Ocampo · Módulo 1</p>
     <div class="hcorredor">📍 Sur 5 — Ciclorruta Porvenir &amp; Av. Guayacanes</div>
-    <div class="dpills">
-      <div class="dpill dp1">
+    <div style="margin-top:22px;">
+      <div class="dpill">
         <span style="opacity:.6;">⬜</span>
         <div>
-          <div class="pnum">Jornada · Jueves</div>
-          <div style="font-size:15px;font-weight:700;letter-spacing:.5px;">02 de Abril · 2026</div>
-        </div>
-      </div>
-      <div class="dpill dp2">
-        <span style="opacity:.6;">⬜</span>
-        <div>
-          <div class="pnum">Jornada · Domingo</div>
-          <div style="font-size:15px;font-weight:700;letter-spacing:.5px;">05 de Abril · 2026</div>
+          <div class="pnum">Jornada #5 · Domingo</div>
+          <div style="font-size:16px;font-weight:700;letter-spacing:.5px;">12 de Abril · 2026</div>
         </div>
       </div>
     </div>
   </div>
- 
+
+  <!-- GREETING -->
   <div class="card greet rv">
     <p class="gtxt">¡Muy buen día, caballeros y señoritas!<br>
-    <span style="font-size:.78em;color:var(--muted);">Comunicado importante para las próximas dos jornadas.</span></p>
+    <span style="font-size:.78em;color:var(--muted);"></span></p>
   </div>
- 
-  <div class="no-asist rv">
-    <span class="no-asist-ico">🚫</span>
-    <div class="no-asist-title">Sin asistencia de servidores sociales</div>
-    <p class="no-asist-sub">
-      Durante las jornadas del <strong>2 y 5 de abril</strong> <strong>no habrá asistencia de servidores sociales</strong> al corredor.<br><br>
-      Estas fechas <strong>no cuentan como jornada práctica</strong> para los estudiantes y no generan horas de SSEO. No es necesario notificar inasistencia ni presentar excusa para estos días.
-    </p>
-    <div class="no-asist-dates">
-      <div class="date-badge">🗓 Jueves 2 de Abril — Sin servidores</div>
-      <div class="date-badge">🗓 Domingo 5 de Abril — Sin servidores</div>
+
+  <!-- REPORTES -->
+  <div class="sl rv">Reportes del día</div>
+  <p class="rv" style="font-size:12.5px;color:var(--muted);margin-bottom:14px;">Horarios límite para cada reporte de la jornada.</p>
+  <div class="rep-grid rv">
+    <div class="rep-item"><span class="riico">📋</span><div class="ritime">08:30</div><div class="rilabel">Asistencia en el drive<br><span style="opacity:.55;font-size:10.5px;">Hora máxima</span></div></div>
+    <div class="rep-item"><span class="riico">🎥</span><div class="ritime">10:30</div><div class="rilabel">Actividad 1ª entrega<br><span style="opacity:.55;font-size:10.5px;">(2) video + (2) foto</span></div></div>
+    <div class="rep-item"><span class="riico">📷</span><div class="ritime">12:30</div><div class="rilabel">Actividad 2ª entrega<br><span style="opacity:.55;font-size:10.5px;">(2) video + (2) foto</span></div></div>
+    <div class="rep-item"><span class="riico">📔</span><div class="ritime">14:00</div><div class="rilabel">Foto libreta firmada<br><span style="opacity:.55;font-size:10.5px;">Hora máxima</span></div></div>
+    <div class="rep-item"><span class="riico">📊</span><div class="ritime">16:00</div><div class="rilabel">Reporte 523<br><span style="opacity:.55;font-size:10.5px;">Hora máxima</span></div></div>
+    <div class="rep-item"><span class="riico">📁</span><div class="ritime">17:30</div><div class="rilabel">Revisión HV <br> <span style="opacity:.55;font-size:10.5px;">Guardián de tramo</span></div></div>
+  </div>
+
+  <div class="dv rv"><div class="ln"></div><div class="dt"></div><div class="dt"></div><div class="dt"></div><div class="ln"></div></div>
+
+  <!-- HORARIO -->
+  <div class="sl rv">Horario · Servidores sociales</div>
+  <p class="rv" style="font-size:12.5px;color:var(--muted);margin-bottom:16px;">Toca cada bloque para ver el detalle del turno.</p>
+
+  <div class="sched rv">
+    <div class="tl">
+
+      <div class="tli" onclick="tog(this)">
+        <div class="tldot"></div>
+        <div class="tlh"><div class="tltime">7:30 am</div><div class="tlico">📍</div>
+          <div class="tllb"><div class="tlname">Llegada al punto</div><div class="tlhint">Hora de inicio oficial</div></div>
+          <div class="tlarr">▾</div></div>
+        <div class="tldet"><div class="tlinn">
+          <span class="tlbadge">Puntualidad</span>
+          <ul>
+            <li>Los servidores deben estar en el punto a las <strong>7:30 am.</strong></li>
+            <li><strong>7:31 – 7:36 am</strong> → Retardo leve · llamado verbal.</li>
+            <li><strong>7:37 – 7:41 am</strong> → Retardo grave · llamado escrito.</li>
+            <li><strong>Después de 7:45 am</strong> → Falta muy grave / posible incumplimiento.</li>
+            <li>Revisar documentos, uniforme y elementos antes del inicio.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="tli" onclick="tog(this)">
+        <div class="tldot"></div>
+        <div class="tlh"><div class="tltime">7:30 – 8:30</div><div class="tlico">🛡️</div>
+          <div class="tllb"><div class="tlname">Inicio de actividades</div><div class="tlhint">Punto fijo · en grupos</div></div>
+          <div class="tlarr">▾</div></div>
+        <div class="tldet"><div class="tlinn">
+          <span class="tlbadge">Operación</span>
+          <ul>
+            <li>Servidores en su <strong>punto fijo asignado para la jornada</strong>, organizados en grupos.</li>
+            <li>La actividad del 12 de abril fue entregada el <strong>30 de marzo</strong> — todos deben tenerla preparada.</li>
+            <li>El servidor que no la tenga lista recibirá la <strong>falta correspondiente por incumplimiento</strong>.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="tli" onclick="tog(this)">
+        <div class="tldot"></div>
+        <div class="tlh"><div class="tltime">8:30 – 10:00</div><div class="tlico">☕</div>
+          <div class="tllb"><div class="tlname">Primer descanso</div><div class="tlhint">Turnos publicados en el grupo · 45 min</div></div>
+          <div class="tlarr">▾</div></div>
+        <div class="tldet"><div class="tlinn">
+          <span class="tlbadge">Descanso · 45 min</span>
+          <ul>
+            <li><strong>Turno A:</strong> 8:30 am – 9:15 am</li>
+            <li><strong>Turno B:</strong> 9:15 am – 10:00 am</li>
+            <li>Turnos ya planificados y publicados, verificar en el drive compartido de las actividades a realizar de los servidores sociales.</li>
+            <li>⚠️ Límite para enviar la asistencia en el drive: <strong>8:30 am.</strong></li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="tli" onclick="tog(this)">
+        <div class="tldot"></div>
+        <div class="tlh"><div class="tltime">10:00 – 11:00</div><div class="tlico">⬡</div>
+          <div class="tllb"><div class="tlname">Operación activa</div><div class="tlhint">1ª entrega de actividad a las 10:30</div></div>
+          <div class="tlarr">▾</div></div>
+        <div class="tldet"><div class="tlinn">
+          <span class="tlbadge">Actividad</span>
+          <ul>
+            <li>A las <strong>10:30 am</strong> → primera entrega: (2) video + (2) foto.</li>
+            <li>Servidores activos y de pie. se recuerda que ningun servidor puede verse sentado fuera del horario de descanso.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="tli" onclick="tog(this)">
+        <div class="tldot"></div>
+        <div class="tlh"><div class="tltime">11:00 – 12:30</div><div class="tlico">🍽️</div>
+          <div class="tllb"><div class="tlname">Segundo descanso</div><div class="tlhint">Turnos publicados en el grupo · 45 min</div></div>
+          <div class="tlarr">▾</div></div>
+        <div class="tldet"><div class="tlinn">
+          <span class="tlbadge">Descanso · 45 min</span>
+          <ul>
+            <li><strong>Turno A:</strong> 11:00 am – 11:45 am</li>
+            <li><strong>Turno B:</strong> 11:45 am – 12:30 pm</li>
+            <li>A las <strong>12:30 pm</strong> → segunda entrega: (2) video + (2) foto.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="tli" onclick="tog(this)">
+        <div class="tldot"></div>
+        <div class="tlh"><div class="tltime">12:30 – 2:00</div><div class="tlico">🔒</div>
+          <div class="tllb"><div class="tlname">Cierre del corredor</div><div class="tlhint">No retirar material antes de 2:00 pm</div></div>
+          <div class="tlarr">▾</div></div>
+        <div class="tldet"><div class="tlinn">
+          <span class="tlbadge">Cierre</span>
+          <ul>
+            <li>Los SS son un gran apoyo activo en levantamiento de vallas y cintas de cerramiento. 561 de que ellos muevan contraflujos o salgan de la ciclovía</li>
+            <li><strong>Nunca retirar material antes de las 2:00 pm</strong> — riesgo de accidente.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="tli" onclick="tog(this)">
+        <div class="tldot"></div>
+        <div class="tlh"><div class="tltime">2:00 pm</div><div class="tlico">🏁</div>
+          <div class="tllb"><div class="tlname">Fin jornada #5</div><div class="tlhint">Reportes post-jornada</div></div>
+          <div class="tlarr">▾</div></div>
+        <div class="tldet"><div class="tlinn">
+          <span class="tlbadge">Post-jornada</span>
+          <ul>
+            <li><strong>14:00</strong> → foto libreta firmada.</li>
+            <li><strong>16:00</strong> → reporte 523.</li>
+            <li><strong>17:30</strong> → revisión HV</li>
+            <li>Recordar a los servidores: reportar llegada a casa en <strong>máximo 1h 30 min.</strong></li>
+          </ul>
+        </div></div>
+      </div>
+
     </div>
   </div>
- 
+
   <div class="dv rv"><div class="ln"></div><div class="dt"></div><div class="dt"></div><div class="dt"></div><div class="ln"></div></div>
- 
+
+  <!-- NOVEDADES -->
+  <div class="sl rv">Novedades · Jornada #5</div>
+  <div class="two rv">
+
+    <div class="card" style="--ca:linear-gradient(90deg,rgba(201,169,110,.4),rgba(142,175,212,.3));">
+      <div class="ch">
+        <div class="ci">👕</div>
+        <div><div class="ct">Presentación personal</div><div class="cs">Revisión obligatoria al inicio</div></div>
+      </div>
+      <ul class="bl">
+        <li><span class="bd bg"></span>Verificar jean azul sin rotos, limpio y a la cintura con cinturón.</li>
+        <li><span class="bd bg"></span>Camibuso negro o blanco debajo de la camiseta. </li>
+        <li><span class="bd bg"></span>Camiseta blanca cuello redondo por dentro del pantalón en todo momento.</li>
+        <li><span class="bd bg"></span>Gorra del IDRD recta, sin cubrir la frente. Obligatoria durante toda la jornada.</li>
+        <li><span class="bd bg"></span>Tenis deportivos limpios. Sin aretes grandes, uñas cortas, sin uñas acrílicas.</li>
+        <li><span class="bd bg"></span>La gorra solo se retira en los descansos asignados y después de las 14:00 horas.</li>
+      </ul>
+      
+    </div>
+    
+
+    <div class="card" style="--ca:linear-gradient(90deg,rgba(201,80,80,.35),rgba(142,175,212,.25));">
+      <div class="ch">
+        <div class="ci">📋</div>
+        <div><div class="ct">Actividad de la jornada</div><div class="cs">Entregada el 30 de marzo</div></div>
+      </div>
+      <ul class="bl">
+        <li><span class="bd bw"></span>La actividad fue entregada con anticipación el 30 de marzo. No hay excusa válida para no tenerla preparada.</li>
+        <li><span class="bd bw"></span>El servidor que llegue sin su actividad lista recibirá la falta correspondiente por incumplimiento según el reglamento SSEO.</li>
+        <li><span class="bd bw"></span>Hacérselo saber al servidor de forma clara y registrar la novedad en la libreta.</li>
+      </ul>
+      <div class="callout" style="--clc:var(--warn);">
+        <span class="cico">📅</span>
+        <span class="ctxt">Las próximas jornadas serán cargadas con anticipación en el <strong>link del cronograma</strong> para que los guardianes de tramo y sus apoyos siempre estén al tanto.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DRIVE -->
+  <div class="sl rv" style="margin-top:8px;">Seguimiento Drive · Asistencia</div>
+  <div class="card rv" style="--ca:linear-gradient(90deg,rgba(106,170,138,.35),rgba(142,175,212,.25));">
+    <div class="ch">
+      <div class="ci">📊</div>
+      <div><div class="ct">Drive M1 · Registro</div><div class="cs">Hoja de asistencia y valoración · Sur 5</div></div>
+    </div>
+    <div class="code-row">
+      <div class="cbadge c57">57</div>
+      <div style="font-size:13.5px;color:var(--dust);">Servidor <strong style="color:var(--neon);">no asistió</strong></div>
+    </div>
+    <div class="code-row" style="margin-top:8px;">
+      <div class="cbadge c58">58</div>
+      <div style="font-size:13.5px;color:var(--dust);">Servidor <strong style="color:var(--neon);">sí asistió</strong></div>
+    </div>
+    <div class="callout" style="--clc:var(--accent);margin-top:14px;">
+      <span class="cico">⚠️</span>
+      <span class="ctxt">El drive <strong>solo acepta "57" y "58"</strong>. Si hay novedad del servidor, enviarla a mi interno verde.</span>
+    </div>
+    <a href="https://docs.google.com/spreadsheets/d/1FqN_S_XNdC6NYwOa0jXA5UrUljUf4oeA6HPwllNnj9s/edit?gid=0#gid=0" target="_blank" class="drive-row">
+      <span style="font-size:28px;">📎</span>
+      <div class="drive-info">
+        <div class="drive-title2">Seguimiento Drive M1</div>
+        <div class="drive-desc2">Hoja de asistencia Módulo 1 — Sur 5</div>
+      </div>
+      <span class="drive-btn2">Abrir →</span>
+    </a>
+  </div>
+
+  <div class="dv rv"><div class="ln"></div><div class="dt"></div><div class="dt"></div><div class="dt"></div><div class="ln"></div></div>
+
+  <!-- REGLAMENTO -->
   <div class="sl rv">Reglamento SSEO · Puntos clave</div>
-  <p class="rv" style="font-size:12.5px;color:var(--muted);margin-bottom:16px;">Aprovecha este espacio para repasar lo esencial. Toca cada punto para leer el detalle.</p>
- 
+  <p class="rv" style="font-size:12.5px;color:var(--muted);margin-bottom:16px;">Toca cada punto para leer el detalle.</p>
+
   <div class="rv">
- 
     <div class="reg-item" onclick="togReg(this)">
       <div class="reg-head"><div class="reg-num">01</div><div class="reg-title">Horario y puntualidad</div><div class="reg-tag">Obligatorio</div><div class="reg-arr">▾</div></div>
       <div class="reg-body"><div class="reg-inner">
-        <p>El horario de prestación del servicio es de <strong>7:30 am a 2:00 pm</strong> todos los domingos y festivos del módulo. Llegar entre 7:31 y 7:36 am es retardo leve; entre 7:37 y 7:41 am, retardo grave. Llegar después de las <strong>7:45 am</strong> es falta muy grave y puede derivar en incumplimiento del SSEO.</p>
+        <p>Horario de prestación: <strong>7:30 am a 2:00 pm.</strong> Llegar entre 7:31 y 7:36 am es retardo leve; entre 7:37 y 7:41 am, retardo grave. Después de las <strong>7:45 am</strong> es falta muy grave y puede derivar en incumplimiento del SSEO.</p>
       </div></div>
     </div>
- 
     <div class="reg-item" onclick="togReg(this)">
-      <div class="reg-head"><div class="reg-num">02</div><div class="reg-title">Uniforme y elementos obligatorios</div><div class="reg-tag">Obligatorio</div><div class="reg-arr">▾</div></div>
+      <div class="reg-head"><div class="reg-num">02</div><div class="reg-title">Uniforme y presentación personal</div><div class="reg-tag">Obligatorio</div><div class="reg-arr">▾</div></div>
       <div class="reg-body"><div class="reg-inner">
-        <p>Jean azul sin rotos, camiseta blanca cuello redondo <strong>por dentro del pantalón</strong>, gorra oscura o la entregada por el IDRD, tenis deportivos limpios, canguro, libreta y bolígrafo. <strong>No se permiten maletas.</strong> El esmalte de uñas debe ser de color claro; no se permiten uñas acrílicas ni aretes grandes durante la jornada.</p>
+        <p>Jean azul sin rotos, camiseta blanca por dentro, gorra del IDRD recta, tenis deportivos limpios, canguro, libreta y bolígrafo. <strong>No se permiten maletas.</strong> Esmalte de color claro, sin uñas acrílicas ni aretes grandes. La gorra debe retirarse únicamente en descansos y después de las 14:00 horas.</p>
       </div></div>
     </div>
- 
     <div class="reg-item" onclick="togReg(this)">
-      <div class="reg-head"><div class="reg-num">03</div><div class="reg-title">La gorra identificadora</div><div class="reg-tag">Énfasis</div><div class="reg-arr">▾</div></div>
+      <div class="reg-head"><div class="reg-num">03</div><div class="reg-title">Descansos</div><div class="reg-tag">Planificados</div><div class="reg-arr">▾</div></div>
       <div class="reg-body"><div class="reg-inner">
-        <p>La gorra entregada por el IDRD identifica al servidor social en el corredor y debe portarse <strong>en todo momento durante la jornada</strong>, excepto en los descansos asignados y después de las <strong>14:00 horas.</strong> En caso de extravío, reportar al Guardián e iniciar el trámite correspondiente antes del jueves siguiente a las 4:00 pm. La reincidencia en la pérdida es causal de incumplimiento del SSEO.</p>
+        <p>Dos descansos de <strong>45 minutos</strong> por jornada. Turnos asignados por el Beta y publicados en el grupo del corredor. El descanso debe tomarse cerca del punto asignado. Retornar tarde es falta leve, grave o muy grave según los minutos.</p>
       </div></div>
     </div>
- 
     <div class="reg-item" onclick="togReg(this)">
-      <div class="reg-head"><div class="reg-num">04</div><div class="reg-title">Descansos</div><div class="reg-tag">Planificados</div><div class="reg-arr">▾</div></div>
+      <div class="reg-head"><div class="reg-num">04</div><div class="reg-title">Celular y conducta en servicio</div><div class="reg-tag">Falta grave</div><div class="reg-arr">▾</div></div>
       <div class="reg-body"><div class="reg-inner">
-        <p>Cada servidor tiene <strong>dos descansos de 45 minutos</strong> por jornada. El turno es asignado por el Beta para cada grupo y publicado en el grupo del corredor. El descanso debe tomarse cerca del punto asignado. Retornar tarde constituye falta leve, grave o muy grave según los minutos de retraso.</p>
+        <p>Uso de celular o audífonos durante el servicio es <strong>falta leve</strong> la primera vez y <strong>falta grave</strong> si es recurrente. Permanecer sentado sin justificación, practicar con acompañantes o mostrar mala actitud también son faltas graves.</p>
       </div></div>
     </div>
- 
     <div class="reg-item" onclick="togReg(this)">
-      <div class="reg-head"><div class="reg-num">05</div><div class="reg-title">Celular y conducta en servicio</div><div class="reg-tag">Falta grave</div><div class="reg-arr">▾</div></div>
+      <div class="reg-head"><div class="reg-num">05</div><div class="reg-title">Inasistencias y excusas</div><div class="reg-tag">Plazos</div><div class="reg-arr">▾</div></div>
       <div class="reg-body"><div class="reg-inner">
-        <p>El uso de celular, audífonos o dispositivos durante la prestación del servicio es <strong>falta leve</strong> si ocurre una vez y <strong>falta grave</strong> si es recurrente. El servidor debe mantenerse de pie, activo y atento. Permanecer sentado sin causa justificada, realizar la práctica con acompañantes o mostrar mala actitud también son faltas graves.</p>
+        <p>Excusas por enfermedad o calamidad doméstica a <strong>serviciosocial.ciclovia@idrd.gov.co</strong> antes del <strong>jueves siguiente a las 4:00 pm.</strong> Carta del acudiente + soporte. No se aceptan excusas de médico particular ni droguería. Mínimo <strong>120 horas</strong> para certificación.</p>
       </div></div>
     </div>
- 
     <div class="reg-item" onclick="togReg(this)">
-      <div class="reg-head"><div class="reg-num">06</div><div class="reg-title">Inasistencias y excusas</div><div class="reg-tag">Plazos</div><div class="reg-arr">▾</div></div>
+      <div class="reg-head"><div class="reg-num">06</div><div class="reg-title">Reporte de llegada a casa</div><div class="reg-tag">Obligatorio</div><div class="reg-arr">▾</div></div>
       <div class="reg-body"><div class="reg-inner">
-        <p>Las excusas por enfermedad o calamidad doméstica deben enviarse a <strong>serviciosocial.ciclovia@idrd.gov.co</strong> antes del <strong>jueves siguiente a las 4:00 pm.</strong> Se requiere carta del acudiente y soporte correspondiente. No se aceptan excusas de médico particular ni droguería. El SSEO requiere mínimo <strong>120 horas</strong> para ser certificado.</p>
+        <p>El servidor debe reportar llegada segura al hogar en un máximo de <strong>1 hora 30 minutos</strong> después de finalizar la jornada. Si no hay reporte, el Guardián realiza la llamada para verificar ubicación.</p>
       </div></div>
     </div>
- 
     <div class="reg-item" onclick="togReg(this)">
-      <div class="reg-head"><div class="reg-num">07</div><div class="reg-title">Reporte de llegada a casa</div><div class="reg-tag">Obligatorio</div><div class="reg-arr">▾</div></div>
+      <div class="reg-head"><div class="reg-num">07</div><div class="reg-title">Hoja de valoración · Descripción</div><div class="reg-tag">Requisito</div><div class="reg-arr">▾</div></div>
       <div class="reg-body"><div class="reg-inner">
-        <p>Al finalizar cada jornada el servidor debe reportar su llegada segura al hogar al Guardián en un plazo máximo de <strong>1 hora 30 minutos.</strong> Si no hay reporte en ese tiempo el Guardián realiza la llamada para verificar la ubicación. Es un requisito de seguridad, no opcional.</p>
+        <p>La descripción debe tener <strong>mínimo 281 caracteres</strong> y <strong>máximo 310 caracteres.</strong> El conteo incluye letras, espacios, signos de puntuación y tildes. Verificar siempre antes de entregar — una descripción fuera de rango no es válida.</p>
       </div></div>
     </div>
- 
     <div class="reg-item" onclick="togReg(this)">
-      <div class="reg-head"><div class="reg-num">08</div><div class="reg-title">Hoja de valoración · Descripción</div><div class="reg-tag">Requisito</div><div class="reg-arr">▾</div></div>
+      <div class="reg-head"><div class="reg-num">08</div><div class="reg-title">Faltas y sus consecuencias</div><div class="reg-tag">Escala</div><div class="reg-arr">▾</div></div>
       <div class="reg-body"><div class="reg-inner">
-        <p>La descripción de la hoja de valoración debe tener <strong>mínimo 281 caracteres</strong> y <strong>máximo 310 caracteres.</strong> El conteo incluye todo: letras, espacios, signos de puntuación y tildes. Una descripción fuera de este rango no será válida. Verificar siempre antes de entregar.</p>
-      </div></div>
-    </div>
- 
-    <div class="reg-item" onclick="togReg(this)">
-      <div class="reg-head"><div class="reg-num">09</div><div class="reg-title">Faltas y sus consecuencias</div><div class="reg-tag">Escala</div><div class="reg-arr">▾</div></div>
-      <div class="reg-body"><div class="reg-inner">
-        <p><strong>Falta leve:</strong> llamado verbal registrado en la libreta. No genera cancelación.<br><br>
+        <p><strong>Falta leve:</strong> llamado verbal en libreta. No genera cancelación.<br><br>
         <strong>Falta grave:</strong> llamado escrito con compromiso firmado por el acudiente. No genera cancelación.<br><br>
-        <strong>Falta muy grave:</strong> incumplimiento del SSEO — retiro definitivo de la jornada con reporte al colegio y al encargado del programa. Dos faltas graves o cuatro leves acumuladas equivalen a una muy grave.</p>
+        <strong>Falta muy grave:</strong> retiro definitivo de la jornada con reporte al colegio. Dos faltas graves o cuatro leves acumuladas equivalen a una muy grave.</p>
       </div></div>
     </div>
- 
-    <div class="reg-item" onclick="togReg(this)">
-      <div class="reg-head"><div class="reg-num">10</div><div class="reg-title">Derechos del servidor social</div><div class="reg-tag">Conocer</div><div class="reg-arr">▾</div></div>
-      <div class="reg-body"><div class="reg-inner">
-        <p>El servidor tiene derecho a ser tratado con respeto y dignidad, a ser escuchado ante conflictos, a conocer el reglamento antes de iniciar, a disfrutar sus descansos en los horarios establecidos y a ser <strong>certificado</strong> una vez completado el tiempo requerido. En caso de posible acoso, puede activar el protocolo de violencia basada en género del programa Ciclovía.</p>
-      </div></div>
-    </div>
- 
   </div>
- 
+
   <div class="dv rv"><div class="ln"></div><div class="dt"></div><div class="dt"></div><div class="dt"></div><div class="ln"></div></div>
- 
+
+  <!-- TAREA PARA COMPAÑEROS -->
+  <div class="tarea-box rv">
+    <div class="tarea-title">Como 54 · del comunicado de servicio social. </div>
+
+    <div class="tarea-item">
+      <div class="tarea-num">1</div>
+      <div class="tarea-content">
+        <div class="tarea-q">Tipos de falta y su seguimiento</div>
+        <div class="tarea-hint">Describe cada tipo de falta que existe en el reglamento SSEO (leve, grave y muy grave) y explica paso a paso el seguimiento que se debe realizar para cada una. ¿Qué hace el Guardián en cada caso? ¿Qué documentos se generan? ¿Cuándo se involucra al acudiente o al colegio? <br> Un ejemplo por cada tipo de falta</div>
+      </div>
+    </div>
+
+    <div class="tarea-item">
+      <div class="tarea-num">2</div>
+      <div class="tarea-content">
+        <div class="tarea-q">Propuesta de actividad para servidores sociales</div>
+        <div class="tarea-hint">Envía una actividad que se pueda realizar en el corredor de Ciclovía con los usuarios, que esté al alcance de los servidores. Debe indicar la modalidad (<strong>ambiental o deportiva</strong>), el nombre de la actividad, la descripción de cómo se ejecuta y los materiales necesarios — que sean accesibles y no dependan del IDRD.</div>
+      </div>
+    </div>
+
+    <div class="tarea-item">
+      <div class="tarea-num">3</div>
+      <div class="tarea-content">
+        <div class="tarea-q">Caracteres permitidos en la descripción de la hoja de valoración</div>
+        <div class="tarea-hint">¿Cuántos caracteres mínimos y máximos permite la descripción de la jornada en la hoja de valoración? ¿Qué elementos cuenta el sistema en ese conteo (letras, espacios, signos, tildes)?</div>
+      </div>
+    </div>
+
+    <div class="tarea-envio">
+      <div class="tarea-envio-ico">📩</div>
+      <div class="tarea-envio-txt">Enviar las tres respuestas al <strong>interno verde</strong> antes de la jornada del <strong>12 de abril.</strong> Respuestas incompletas no serán tenidas en cuenta.</div>
+    </div>
+  </div>
+
+  <!-- FINAL -->
   <div class="final rv">
     <span class="ficon">⬡</span>
-    <p>Aprovechen estos días para repasar el reglamento y llegar<br>
-    a la siguiente jornada con todo claro.<br>
-    <strong>Nos vemos en el corredor.</strong></p>
+    <p>Jornada #5 — de vuelta los servidores al corredor con todo claro.<br>
+    Recuerden: la <strong>preparación y actitud</strong> de cada Guardián<br>
+    define la experiencia de los servidores en el corredor.</p>
   </div>
- 
+
   <!-- FOOTER -->
   <div class="footer rv">
-    <div class="footer-brand">
-      John Fredy Jimenez Rincon · Beta Sur 5 · 3232043421 · jimenez.rincon.john.fredy@outlook.com
-    </div>
+    <div class="footer-brand">John Fredy Jimenez Rincon · Beta Sur 5 · 3232043421 · jimenez.rincon.john.fredy@outlook.com</div>
     <div class="footer-sub">John Jimenez © 2026 · Todos los derechos reservados</div>
   </div>
- 
+
 </div>
- 
+
 <script>
 const cv=document.getElementById('stars'),cx=cv.getContext('2d');
 function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();addEventListener('resize',rsz);
@@ -336,6 +604,11 @@ let T=0;
   });
   requestAnimationFrame(draw);
 })();
+function tog(el){
+  const was=el.classList.contains('open');
+  document.querySelectorAll('.tli').forEach(i=>i.classList.remove('open'));
+  if(!was)el.classList.add('open');
+}
 function togReg(el){
   const was=el.classList.contains('open');
   document.querySelectorAll('.reg-item').forEach(i=>i.classList.remove('open'));
